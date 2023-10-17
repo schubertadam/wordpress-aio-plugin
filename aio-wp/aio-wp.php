@@ -11,3 +11,14 @@
  * Version: 1.0
  * Text Domain: aio-wp
  */
+
+define('AIO_ROOT', plugin_dir_path(__FILE__));
+define('AIO_URL', plugin_dir_url(__FILE__));
+
+if (file_exists(AIO_ROOT . 'vendor/autoload.php')) {
+	require_once AIO_ROOT . "vendor/autoload.php";
+} else {
+	add_action('admin_notices', function () {
+		echo '<div class="notice notice-error"><p>AIO WP Extension: please run the composer</p></div>';
+	});
+}

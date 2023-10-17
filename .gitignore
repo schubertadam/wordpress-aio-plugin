@@ -6,3 +6,4 @@
 !.gitignore
 !docker-compose.yml
 !aio-wp
+aio-wp/vendor
