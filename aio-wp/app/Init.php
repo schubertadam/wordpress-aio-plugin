@@ -15,22 +15,8 @@ class Init {
 	 */
 	public function registerServices(): void {
 		foreach ( self::getServices() as $service ) {
-			$service = $this->instantiate($service);
-
-			if (method_exists($service, 'register')) {
-				$service->register();
-			}
+			callRegisterMethodIfExist($service);
 		}
-	}
-
-	/**
-	 * Create an object from the given class
-	 * @param string $class
-	 *
-	 * @return mixed the instance
-	 */
-	private function instantiate( string $class ): mixed {
-		return new $class();
 	}
 
 	/**
