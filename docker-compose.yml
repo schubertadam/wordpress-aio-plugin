@@ -19,6 +19,7 @@ services:
     image: wordpress:latest
     volumes:
       - ./:/var/www/html
+      - ./aio-wp:/var/www/html/wp-content/plugins/aio-wp
     restart: always
     ports:
       - '8000:80'
