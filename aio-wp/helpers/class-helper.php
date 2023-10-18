@@ -30,3 +30,32 @@ function callRegisterMethodIfExist( mixed $class ): void {
 		$object->register();
 	}
 }
+
+/**
+ * Iterate through $root directory and call the register method
+ * If the given element is a directory, then iterate through it as well
+ * @param string $root
+ * @param string $namespace
+ *
+ * @return void
+ */
+function iterateTroughFilesAndCallRegisterMethod( string $root, string $namespace ): void {
+	$items = new DirectoryIterator($root);
+
+	/** @var DirectoryIterator $item */
+	foreach ( $items as $item ) {
+		if (!$item->isDot()) {
+			if ($item->isFile() && $item->getExtension() === 'php') {
+				$fileName = pathinfo($item->getFilename(), PATHINFO_FILENAME);
+				callRegisterMethodIfExist("{$namespace}{$fileName}");
+			}
+
+			// In case of directory we will scan it as well
+			if ($item->isDir()) {
+				$subdirectory = "{$root}/{$item->getFilename()}";
+				$subNamespace = "{$namespace}{$item->getFilename()}\\";
+				iterateTroughFilesAndCallRegisterMethod($subdirectory, $subNamespace);
+			}
+		}
+	}
+}
