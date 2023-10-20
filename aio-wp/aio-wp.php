@@ -40,3 +40,7 @@ register_activation_hook(__FILE__, function () {
 register_deactivation_hook(__FILE__, function () {
 	flush_rewrite_rules();
 });
+
+add_action('admin_enqueue_scripts', function () {
+	wp_enqueue_style('tiny_mce_buttons', AIO_URL . 'assets/css/style.css');
+}, -99);
