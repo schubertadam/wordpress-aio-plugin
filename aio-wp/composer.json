@@ -16,6 +16,7 @@
     ]
   },
   "require": {
-    "ext-gd": "*"
+    "ext-gd": "*",
+    "firebase/php-jwt": "^6.8"
   }
 }
