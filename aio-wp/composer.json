@@ -12,7 +12,8 @@
       "App\\": "./app"
     },
     "files": [
-      "helpers/class-helper.php"
+      "helpers/class-helper.php",
+      "helpers/api-helper.php"
     ]
   },
   "require": {
