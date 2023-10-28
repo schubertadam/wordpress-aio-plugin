@@ -5,6 +5,8 @@
  * Time: 07:31
  */
 
+use App\Core\Api\HttpResponse;
+
 /**
  * Create a WP_Rest_Response for frontend development
  *
@@ -49,7 +51,7 @@ function error(int $httpResponseCode, string $message, array $data = [], int $st
  *
  * @return WP_REST_Response
  */
-function success(string $message, array $data = [], int $httpResponseCode = 200, int $status = 0): WP_REST_Response {
+function success(string $message, array $data = [], int $httpResponseCode = HttpResponse::HTTP_OK, int $status = 0): WP_REST_Response {
 	return response(true, $status, $httpResponseCode, $message, $data);
 }
 
