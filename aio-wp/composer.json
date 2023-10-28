@@ -13,7 +13,8 @@
     },
     "files": [
       "helpers/class-helper.php",
-      "helpers/api-helper.php"
+      "helpers/api-helper.php",
+      "helpers/admin-helper.php"
     ]
   },
   "require": {
